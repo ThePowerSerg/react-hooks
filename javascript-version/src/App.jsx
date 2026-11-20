@@ -1,57 +1,25 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 function App() {
+     
+    const [profile, setProfile] = useState({});
 
- // profile state
- const [profile, setProfile] = useState({});
+    const handleChange = ({target}) => {
+        const {name, value} = target
+        
+        setProfile((prevProfile) => ({
+            ...prevProfile,
+            [name]: value
+        }));
+    } 
 
- // handle change from the form
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-    
-    setProfile((prevProfile) => ({
-      ...prevProfile,
-      [name]: value
-    }));
-  };
+    // handleSubmit
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(JSON.stringify(profile, '', 2));
-  };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        value={profile.firstName || ''}
-        onChange={handleChange}
-        name="firstName"
-        type="text"
-        placeholder="First Name"
-      />
-      <input
-        value={profile.lastName || ''}
-        onChange={handleChange}
-        type="text"
-        name="lastName"
-        placeholder="Last Name"
-      />
-      <input
-        value={profile.bday || ''}
-        onChange={handleChange}
-        type="date"
-        name="bday"
-      />
-      <input
-        value={profile.password || ''}
-        onChange={handleChange}
-        type="password"
-        name="password"
-        placeholder="Password"
-      />
-      <button type="submit">Save Profile</button>
-    </form>
-  );
+    return (
+
+        // form
+
+
+    )
 }
-
-export default App
